@@ -16,3 +16,18 @@ We are basing our work on a paper An Optimized K-Nearest Neighbor Algorithm
 for Large Scale Hierarchical Text Classification:
 Xiaogang Han , Junfa Liu , Zhiqi Shen , and Chunyan Miao
   
+Development
+-----------
+
+## GIT
+The preferred way to contribute to this repository is to fork the repository
+
+1. Fork the project reository: click on the 'Fork' button near the top of the page. This creates a copy of the current image of the code under your account on the github server.
+
+2. Clone this copy to your local disk:
+   $ git clone https://github.com/krispingal/hier_txt_classifier
+
+3. Create a branch to hold your changes:
+   $ git checkout -b my-feature
+   and start making changes. Never work in the *master* branch
+ 
