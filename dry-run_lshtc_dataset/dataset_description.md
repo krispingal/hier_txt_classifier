@@ -5,25 +5,25 @@ Dataset Description
 
 The data have been constructed by:
 
-(a)    crawling Web pages that are found in the ODP and translating them into feature vectors (content vectors).
+*    crawling Web pages that are found in the ODP and translating them into feature vectors (content vectors).
 
-(b)    translating into feature vectors the ODP descriptions of Web pages and the categories (Web page and category description vectors).
+*    translating into feature vectors the ODP descriptions of Web pages and the categories (Web page and category description vectors).
 
-(c)    splitting the set of Web pages into a training, a validation and a test set, per ODP category.
+*    splitting the set of Web pages into a training, a validation and a test set, per ODP category.
 
 Two datasets will be used for the challenge: a large one (12294 categories) and a smaller one (1139 categories). The participants will get the chance to dry-run their classification methods on the smaller dataset. They will then be asked to train and tune their system using the training and validation parts of the larger set, and provide their classification results on the test part.
 
 The directory of each dataset is composed of:
 
-- cat_hier.txt file.
+-  cat_hier.txt file.
 
-- Task1_Train:CrawlData_Test:CrawlData directory.
+-  Task1_Train:CrawlData_Test:CrawlData directory.
 
-- Task2_Train:RDFData_Test:CrawlData directory.
+-  Task2_Train:RDFData_Test:CrawlData directory.
 
-- Task3_Train:CrawlData+RDFData_Test:CrawlData directory.
+-  Task3_Train:CrawlData+RDFData_Test:CrawlData directory.
 
-- Task4_Train:CrawlData+RDFData_Test:CrawlData+RDFData directory.
+-  Task4_Train:CrawlData+RDFData_Test:CrawlData+RDFData directory.
 
 The file cat_hier.txt contains the hierarchy information about the categories of the training set. Each line of this file is a set of ordered integers and corresponds to a branch of the hierarchy from the root to a leaf category. For example, the line:
 1 5 8 10 92
@@ -31,19 +31,19 @@ correponds to a branch where 1 is the root category and 92 is the leaf category.
 
 The directory of each Task  is composed of:
 
-- train.txt file (contains the Web page feature vectors in order to train the system).
+-  train.txt file (contains the Web page feature vectors in order to train the system).
 
-- classDescr.txt file (contains the category feature vectors in order to train the system, only in Tasks containing information from ODP descriptions of Web pages).
+-  classDescr.txt file (contains the category feature vectors in order to train the system, only in Tasks containing information from ODP descriptions of Web pages).
 
-- validation.txt file (contains the Web page feature vectors in order to tune the system).
+-  validation.txt file (contains the Web page feature vectors in order to tune the system).
 
-- test.txt file (contains the Web page feature vectors in order to test the system).
+-  test.txt file (contains the Web page feature vectors in order to test the system).
 
 More information about the above files and for each task can be found here.
 
 The format of each file follows the libSVM format:
 
-- Each line corresponds to a sparse vector (i.e. a document) and has the following format:
+-  Each line corresponds to a sparse vector (i.e. a document) and has the following format:
 
 label feat:value ... feat:value \n
 
