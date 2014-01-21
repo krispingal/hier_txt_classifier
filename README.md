@@ -3,10 +3,10 @@ Hierarchical Text Classification
 About
 ------------
 This is our undergraduate final year project, Hierarchical Text Classification. The team members/contributors are 
-*Krishna Pingal B (me)
-*[Bosco Frank Paul] (https://github.com/boscofp)
-*John C F and 
-*Binu T Babu.
+*  Krishna Pingal B (me)
+*  [Bosco Frank Paul] (https://github.com/boscofp)
+*  John C F and 
+*  Binu T Babu.
 
 
 Our motivation for this came from lshtc(large scale hierarchical text classification) contests, so eventhough lshtc require in-depth knowledge of various machine learning algorithms, optimizations and a lot of mathematics. We figured we would be able to do Hierarchical Text Classification by leaving optimization and methods which are particularly targetting large input size.
