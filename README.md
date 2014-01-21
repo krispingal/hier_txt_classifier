@@ -25,9 +25,18 @@ The preferred way to contribute to this repository is to fork the repository
 1. Fork the project reository: click on the 'Fork' button near the top of the page. This creates a copy of the current image of the code under your account on the github server.
 
 2. Clone this copy to your local disk:
-   <code>$ git clone https://github.com/krispingal/hier_txt_classifier</code>
+           $ git clone https://github.com/krispingal/hier_txt_classifier</code>
 
 3. Create a branch to hold your changes:
-   <code>$ git checkout -b my-feature</code>
+           $ git checkout -b my-feature</code>
    and start making changes. Never work in the `master` branch
- 
+
+4. Work on this copy on your computer using Git to do the version control. When you are done editing do:
+           $ git add modified_files
+           $ git commit
+   to record your changes in Git to your github account do:
+           $ git push orign my-feature
+
+Finally, go to the webpage of the forked repository in your account and click Pull Request to send your changes to the maintainers for review. This will send an email to the committers.
+
+This readme has a lot of it's text based on the documentation of scikit-learn, which maintains a very good documentation.
