@@ -1,0 +1,1 @@
+float validation(char *val);
