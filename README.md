@@ -51,7 +51,7 @@ Finally, go to the webpage of the forked repository in your account and click Pu
 Disclaimer: This readme is based on the documentation of scikit-learn, which maintains a very good documentation.
 
 Workflow
-===========
+-----------------
 
 We are using dataset provided by [lshtc] (http://lshtc.iit.demokritos.gr/) for their first competition, we will be working with their dry run dataset
 which is a smaller compared to the actual one they use in the competition. In this dataset every document is represented as a feature vector, with features not occuring omitted. We are using slightly modified k nearest neighbour algorithm to classify the documents. Initially we used k in each hierarchical level to be <span style="white-space: nowrap; font-size: larger">
@@ -61,10 +61,25 @@ In the current model we are using validation to find the value of the parameter 
 
 Lastly we are using PCA to reduce the number of dimensions within levels. Within each level there would be few dimensions which would not contribute to the classification and hence they are removed.
 
-K Nearest Neighbour Algorithm
+K-Nearest Neighbor Algorithm
 ----------------------------
 
 This is one of the simplest and most intuitive Machine Learning algorithms there is for classification. The rationale is as follows:-
  When a test data point is given we try to imagine the "smallest" hyper-sphere centered at this test point such that it includes the nearest _k_ training data points. Now we conduct a majority vote and our target point is assigned the class which majority of the included trainining points belong to.
 
-To avoid a no-decision situation due to an equi-partition of votes we keep _k_ odd when no. of classes is even and even otherwise.
+To avoid a no-decision situation due to an equi-partition of votes we keep _k_ odd when # of classes is even, and even otherwise. 
+One can also vary the bias of the model by changing the parameter _k_. When _k_ = _n_ it is a highly biased model with low variance. On the other hand when _k_ = 1 the model has high variance and low bias. Hence _k_NN is a very flexible model. # of data points in training set = _n_
+
+Some of the benefits of kNN which made it the major classifier for this project are
+* Simple and easy to interpret
+* very flexible
+* is a type of lazy learningr
+* has theoretical backing that when _n_ is large the misclassification rate will be at-most twice the bayesian misclassification rate.
+
+The last benefit ensures that if # of points in training set is very large the kNN classifier will perform very good.
+
+The disadvantages of kNN are
+* requires high computational power when _n_ gets large
+* when _d_ the # of dimensions grows large Euclidean distance forces the hyper-sphere to grow very large.
+* needs to keep all _n_ points in memory
+
