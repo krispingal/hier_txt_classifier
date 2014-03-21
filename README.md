@@ -61,22 +61,22 @@ The preferred way to contribute to this repository is to fork the repository
 
 2. Clone this copy to your local disk:
 
-           $ git clone https://github.com/krispingal/hier_txt_classifier
+        $ git clone https://github.com/krispingal/hier_txt_classifier
 
 3. Create a branch to hold your changes:
 
-           $ git checkout -b my-feature
+        $ git checkout -b my-feature
 
    and start making changes. Never work in the `master` branch
 
 4. Work on this copy on your computer using Git to do the version control. When you are done editing do:
 
-           $ git add modified_files
-           $ git commit
+        $ git add modified_files
+        $ git commit
 
    to record your changes in Git to your github account do:
 
-           $ git push orign my-feature
+        $ git push orign my-feature
 
 Finally, go to the webpage of the forked repository in your account and click Pull Request to send your changes to the maintainers for review. This will send an email to the committers.
 
@@ -89,14 +89,14 @@ A "document" is a list of "key":"value" pairs (a key is analogous to a column)
 "Value" can be a boolean, number, string, document (yes!), or an array of those types!
 An typical document looks like this:
 
-        { "_id": 2983,
-          "name": "John",
-          "date_of_birth": {"year":1992, "month": 11, "day": 24}, 
-          "purchase_history": [
-            {"item": "Pencil", "price": 10, "timestamp": 23482473},
-            {"item": "Eraser", "price": 8, "timestamp": 23412321}
-          ]
-        }
+	{ "_id": 2983,
+	  "name": "John",
+	  "date_of_birth": {"year":1992, "month": 11, "day": 24}, 
+	  "purchase_history": [
+	    {"item": "Pencil", "price": 10, "timestamp": 23482473},
+	    {"item": "Eraser", "price": 8, "timestamp": 23412321}
+	  ]
+	}
 
 To know more about MongoDB, visit: http://docs.mongodb.org/manual/crud/
 
@@ -108,62 +108,61 @@ The following libraries are required to run the C code files:
 
 Compiling:
 
-        gcc lshtc2json.c -o lshtc2json
-        gcc lshtc_cats2json.c -o lshtc_cats2json
-        gcc json2mongo.c -o json2mongo $(pkg-config --libs --cflags libmongoc)
+	gcc lshtc2json.c -o lshtc2json
+	gcc lshtc_cats2json.c -o lshtc_cats2json
+	gcc json2mongo.c -o json2mongo $(pkg-config --libs --cflags libmongoc)
 
 Start the mongo server
 
-        $ mongod --dbpath=/some/dir/ --logpath=some/file
+	$ mongod --dbpath=/some/dir/ --logpath=some/file
 
 read a libsvm formatted document and convert to json format
 
-        $ ./lshtc2json lshtc_dataset/Task1_Train\:CrawlData_Test\:CrawlData/train.txt > lshtc1_train.json
+	$ ./lshtc2json lshtc_dataset/Task1_Train\:CrawlData_Test\:CrawlData/train.txt > lshtc1_train.json
 
 read a json formatted document and put it into database (database name is hardcoded, collection name is the first command line argument)
 
-        $ ./json2mongo lshtc_task1 lshtc1_train.json
+	$ ./json2mongo lshtc_task1 lshtc1_train.json
 
 read the lshtc cat_heir.txt and convert to json format
 
-        $ ./lshtc_cats2json lshtc_dataset/cat_hier.txt > lshtc_cat_heir.json
-
-        $ ./json2mongo lshtc_cats_init lshtc_cat_heir.json
+	$ ./lshtc_cats2json lshtc_dataset/cat_hier.txt > lshtc_cat_heir.json
+	$ ./json2mongo lshtc_cats_init lshtc_cat_heir.json
 
 Start the mongo client
 
-        $ mongo
+	$ mongo
 
 Run the following commands to make some final touches to the database
 
-        > show dbs         # list databases
-        > use htc          # switch to database 'htc'
-        > load("lshtc_init.js")
+	> show dbs         # list databases
+	> use htc          # switch to database 'htc'
+	> load("lshtc_init.js")
 
 Testing:
 
-        > db.getCollectionNames()
-        > db.lshtc_task1.count({"features.feat_id": 839458})         # get the number of documents containing feat_id '839458'
-        > db.lshtc_task1.findOne()
-        > db.lshtc_cats_init.count({"ancestors.0": 1})
-        > db.lshtc_cats.findOne()
+	> db.getCollectionNames()
+	> db.lshtc_task1.count({"features.feat_id": 839458})         # get the number of documents containing feat_id '839458'
+	> db.lshtc_task1.findOne()
+	> db.lshtc_cats_init.count({"ancestors.0": 1})
+	> db.lshtc_cats.findOne()
 
 Classifying
 -----------
 Start the mongo server and load the test dataset into the db:
 
-        $ ./lshtc2json lshtc_dataset/Task1_Train\:CrawlData_Test\:CrawlData/test.txt > lshtc1_test.json
-        $ ./json2mongo lshtc_test1 lshtc1_test.json
+	$ ./lshtc2json lshtc_dataset/Task1_Train\:CrawlData_Test\:CrawlData/test.txt > lshtc1_test.json
+	$ ./json2mongo lshtc_test1 lshtc1_test.json
 
 Start the mongo client and:
 
-        > load("lshtc_knn.js")
-        true
-        > var out, cat_id=0
-        > var doc=db.lshtc_test1.findOne()
-        > out=compute_cossim(doc, cat_id)
-        mapReduce1395390365812
-        > knn(out, cat_id)
+	> load("lshtc_knn.js")
+	true
+	> var out, cat_id=0
+	> var doc=db.lshtc_test1.findOne()
+	> out=compute_cossim(doc, cat_id)
+	mapReduce1395390365812
+	> knn(out, cat_id)
 	k: 47.23875527572673
 	[
 		{
@@ -186,10 +185,10 @@ Start the mongo client and:
 		},
 		...
 	]
-        > cat_id=1
-        > out=compute_cossim(doc, cat_id)
-        mapReduce1395391159844
-        > knn(out, cat_id)
+	> cat_id=1
+	> out=compute_cossim(doc, cat_id)
+	mapReduce1395391159844
+	> knn(out, cat_id)
 	k: 20.024984394500787
 	[
 		{
