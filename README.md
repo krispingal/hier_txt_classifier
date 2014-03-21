@@ -88,6 +88,7 @@ A "document" is a list of "key":"value" pairs (a key is analogous to a column)
 "Key" is always a string.
 "Value" can be a boolean, number, string, document (yes!), or an array of those types!
 An typical document looks like this:
+
         { "_id": 2983,
           "name": "John",
           "date_of_birth": {"year":1992, "month": 11, "day": 24}, 
@@ -106,33 +107,41 @@ The following libraries are required to run the C code files:
 * https://github.com/mongodb/mongo-c-driver
 
 Compiling:
+
         gcc lshtc2json.c -o lshtc2json
         gcc lshtc_cats2json.c -o lshtc_cats2json
         gcc json2mongo.c -o json2mongo $(pkg-config --libs --cflags libmongoc)
 
 Start the mongo server
+
         $ mongod --dbpath=/some/dir/ --logpath=some/file
 
 read a libsvm formatted document and convert to json format
+
         $ ./lshtc2json lshtc_dataset/Task1_Train\:CrawlData_Test\:CrawlData/train.txt > lshtc1_train.json
 
 read a json formatted document and put it into database (database name is hardcoded, collection name is the first command line argument)
+
         $ ./json2mongo lshtc_task1 lshtc1_train.json
 
 read the lshtc cat_heir.txt and convert to json format
+
         $ ./lshtc_cats2json lshtc_dataset/cat_hier.txt > lshtc_cat_heir.json
 
         $ ./json2mongo lshtc_cats_init lshtc_cat_heir.json
 
 Start the mongo client
+
         $ mongo
 
 Run the following commands to make some final touches to the database
+
         > show dbs         # list databases
         > use htc          # switch to database 'htc'
         > load("lshtc_init.js")
 
 Testing:
+
         > db.getCollectionNames()
         > db.lshtc_task1.count({"features.feat_id": 839458})         # get the number of documents containing feat_id '839458'
         > db.lshtc_task1.findOne()
@@ -142,10 +151,12 @@ Testing:
 Classifying
 -----------
 Start the mongo server and load the test dataset into the db:
+
         $ ./lshtc2json lshtc_dataset/Task1_Train\:CrawlData_Test\:CrawlData/test.txt > lshtc1_test.json
         $ ./json2mongo lshtc_test1 lshtc1_test.json
 
 Start the mongo client and:
+
         > load("lshtc_knn.js")
         true
         > var out, cat_id=0
@@ -250,4 +261,5 @@ Start the mongo client and:
 	]
 	> doc.cat_id
 	29
+
 So the document is classified into category 141923, though its original category is 29 (missed at the last level of classification)
