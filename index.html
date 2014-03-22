@@ -180,15 +180,15 @@ Number of data points in training set = \( n \).</p>
 
 <ul>
 <li>requires high computational power when \( n \) gets large</li>
-<li>when \( d \) the # of dimensions grows large Euclidean distance forces the hyper-sphere to grow very large. This phenomen is called <a href="http://en.wikipedia.org/wiki/Curse_of_dimensionality">curse of dimensionality</a></li>
+<li>when \( d \) the # of dimensions grows large Euclidean distance forces the hyper-sphere to grow very large. This phenomenon is called <a href="http://en.wikipedia.org/wiki/Curse_of_dimensionality">curse of dimensionality</a></li>
 <li>needs to keep all \( n \) points in memory.</li>
 </ul>
 
 <p>The error measure we are using is a simple error rate, which can be found out like this, when our training observations are given like this {(\( x_1, y_1 \)), &hellip; ,(\( x_n, y_n \))}
-\( \frac{1}{n}\sum\limits_{i=1}^{n} I(\hat{y_{i}}\neq y_{i}) \)</p>
+\[ \frac{1}{n}\sum\limits_{i=1}^{n} I(\hat{y_{i}}\neq y_{i}) \]</p>
 
 <p>where \( I(\hat{y_{i}}\neq y_{i}) \) is an indicator variable that equals one when \( y_{i} \neq \hat y_{i} \)
-and \( \hat{y_{i}} \) is the predicted value for the obsevation \( x_{i} \) and it&#39;s corresponding true value/response = \( y_{i} \)</p>
+and \( \hat{y_{i}} \) is the predicted value/class for the obsevation \( x_{i} \) and it&#39;s corresponding true value/response = \( y_{i} \)</p>
 
 </body>
 
