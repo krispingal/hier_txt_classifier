@@ -82,6 +82,8 @@ Finally, go to the webpage of the forked repository in your account and click Pu
 
 ## MongoDB
 
+<<<<<<< HEAD
+=======
 A MongoDB database consists of several "collection"s (analogous to a table)
 A "collection" consists of several "document"s (analogous to a row)
 A "document" is a list of "key":"value" pairs (a key is analogous to a column)
@@ -262,3 +264,4 @@ Start the mongo client and:
 	29
 
 So the document is classified into category 141923, though its original category is 29 (missed at the last level of classification)
+>>>>>>> 5eb037d9e5538b48731b565fc79cede0fafeaab9
