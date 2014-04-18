@@ -49,8 +49,6 @@ The preferred way to contribute to this repository is to fork the repository
 Finally, go to the webpage of the forked repository in your account and click Pull Request to send your changes to the maintainers for review. This will send an email to the committers.
 
 ## MongoDB
-
-=======
 A MongoDB database consists of several "collection"s (analogous to a table)
 A "collection" consists of several "document"s (analogous to a row)
 A "document" is a list of "key":"value" pairs (a key is analogous to a column)
@@ -79,7 +77,7 @@ Compiling:
 
 	gcc lshtc2json.c -o lshtc2json
 	gcc lshtc_cats2json.c -o lshtc_cats2json
-	gcc json2mongo.c -o json2mongo $(pkg-config --libs --cflags libmongoc)
+	gcc json2mongo.c -o json2mongo $(pkg-config --libs --cflags libmongoc-1.0)
 
 Start the mongo server
 
